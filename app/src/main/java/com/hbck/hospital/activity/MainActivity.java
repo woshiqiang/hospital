@@ -14,6 +14,12 @@ import com.hbck.hospital.fragment.OrderFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * @author admin
+ * @time 2018-11-29 17:19
+ * @类描述：主界面
+ * @变更记录:
+ */
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.rg_main)
     RadioGroup rgMain;
@@ -48,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             showFragment(index);
         });
 
-        fragments = new Fragment[]{new HomeFragment(), new OrderFragment(),new MeFragment()};
+        fragments = new Fragment[]{new HomeFragment(), new OrderFragment(), new MeFragment()};
         getSupportFragmentManager().beginTransaction().add(R.id.fl_main, fragments[0]).add(R.id.fl_main, fragments[1]).hide(fragments[1]).show(fragments[0]).commit();
     }
 
