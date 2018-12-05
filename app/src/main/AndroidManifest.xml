@@ -28,7 +28,8 @@
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.DetailActivity" />
         <activity android:name=".activity.SelectCellActivity" />
-        <activity android:name=".activity.YuYueActivity"></activity>
+        <activity android:name=".activity.YuYueActivity" />
+        <activity android:name=".activity.AboutActivity"></activity>
     </application>
 
 </manifest>

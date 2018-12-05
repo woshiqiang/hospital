@@ -105,7 +105,7 @@
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/ic_settings_black_24dp"
                 android:drawablePadding="5dp"
-                android:text="我的商品" />
+                android:text="我的预约" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -115,6 +115,36 @@
         </LinearLayout>
 
         <View style="@style/app_line" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_click_selector"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="@dimen/commDimen">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/ic_settings_black_24dp"
+                android:drawablePadding="5dp"
+                android:text="关于我们" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_chevron_right_black_24dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#f0f0f0" />
 
 
         <LinearLayout

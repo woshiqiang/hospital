@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.google.gson.Gson;
+import com.hbck.hospital.bean.User;
+
 
 /**
  * @time 2017-12-13 10:18
@@ -59,6 +62,25 @@ public class SpUtil {
         }
 
         return null;
+    }
+
+    /**
+     * 保存user信息
+     *
+     * @param user
+     */
+    public static void saveUser(User user) {
+        Gson gson = new Gson();
+        String json = gson.toJson(user);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("user", json);
+        editor.apply();
+    }
+
+
+    public static User getUser() {
+        String string = prefs.getString("user", "");
+        return new Gson().fromJson(string, User.class);
     }
 
 

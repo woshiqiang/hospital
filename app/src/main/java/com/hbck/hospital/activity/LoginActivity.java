@@ -93,6 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                             dialog.dismiss();
                             Log.d("LoginActivity", "baseBean:" + baseBean);
                             if (baseBean.code == 1) {
+                                SpUtil.saveUser(baseBean.data.user);
                                 SpUtil.put(Constants.USERNAME, username);
                                 SpUtil.put(Constants.PASSWORD, password);
                                 Toast.makeText(this, baseBean.message, Toast.LENGTH_SHORT).show();
