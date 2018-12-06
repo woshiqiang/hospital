@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,6 +89,10 @@ public class MeFragment extends Fragment {
         if (currentUser != null) {
             tvNick.setText(SpUtil.getString(Constants.USERNAME));
             tvIntroduction.setText(currentUser.getNickname());
+            String image = currentUser.getImage();
+            if (!TextUtils.isEmpty(image)){
+                ImageLoaderUtil.display(getContext(), image, rivHead);
+            }
         }
 
     }
