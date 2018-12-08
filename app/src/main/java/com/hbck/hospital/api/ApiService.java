@@ -55,6 +55,8 @@ public interface ApiService {
     @GET("api/hospital/getDepartments")
     Flowable<BaseBean> getDepartments(@Query("hosId") Long hosId, @Query("pid") Long pid);
 
+    @GET("api/hospital/getCells")
+    Flowable<BaseBean> getCells(@Query("hosId") Long hosId);
 
     /**
      * type 1:问题图片 2：头像 3：录音
@@ -62,5 +64,8 @@ public interface ApiService {
     @Multipart
     @POST("file/uploadFile")
     Flowable<BaseBean> uploadFile(@PartMap Map<String, RequestBody> map, @Query("type") String type);
+
+    @GET("api/hospital/getDoctorsByCellID")
+    Flowable<BaseBean> getDoctorsByCellID(@Query("cellId") Long cellId);
 
 }

@@ -9,30 +9,16 @@
 
     <include layout="@layout/include_tool_bar" />
 
-
-    <LinearLayout
+    <GridView
+        android:id="@+id/gridView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="#f1f1f1"
+        android:horizontalSpacing="1dp"
+        android:numColumns="3"
+        android:verticalSpacing="1dp">
 
-
-        <ListView
-            android:id="@+id/lv_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:background="#fff" />
-
-
-        <ListView
-            android:id="@+id/lv_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="1dp"
-            android:layout_weight="2"
-            android:background="#fff" />
-
-    </LinearLayout>
+    </GridView>
 
 
 </LinearLayout>

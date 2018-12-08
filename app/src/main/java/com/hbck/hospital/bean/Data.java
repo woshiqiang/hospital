@@ -11,4 +11,9 @@ public class Data implements Serializable {
     public List<Department> departs;
 
     public ArrayList<String> list;//图片
+
+    public ArrayList<Cell> cells;//科室
+
+    public ArrayList<Doctor> doctors;//医生
+
 }

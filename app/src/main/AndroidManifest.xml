@@ -29,7 +29,9 @@
         <activity android:name=".activity.DetailActivity" />
         <activity android:name=".activity.SelectCellActivity" />
         <activity android:name=".activity.YuYueActivity" />
-        <activity android:name=".activity.AboutActivity"></activity>
+        <activity android:name=".activity.AboutActivity" />
+        <activity android:name=".activity.SelectDoctorActivity" />
+        <activity android:name=".activity.DoctorDetailActivity"></activity>
     </application>
 
 </manifest>
