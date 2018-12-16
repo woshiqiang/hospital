@@ -6,37 +6,30 @@ public class Department implements Serializable {
     /**
      * 主键
      *
-     * @mbggenerated Tue Nov 06 17:24:31 CST 2018
+     * @mbggenerated Wed Dec 12 12:20:38 CST 2018
      */
     private Long id;
 
     /**
-     * 所属医院id
-     *
-     * @mbggenerated Tue Nov 06 17:24:31 CST 2018
-     */
-    private Long h_id;
-
-    /**
      * 科室名称
      *
-     * @mbggenerated Tue Nov 06 17:24:31 CST 2018
+     * @mbggenerated Wed Dec 12 12:20:38 CST 2018
      */
     private String name;
 
     /**
-     * 简介
+     * 图片
      *
-     * @mbggenerated Tue Nov 06 17:24:31 CST 2018
+     * @mbggenerated Wed Dec 12 12:20:38 CST 2018
      */
-    private String brief;
+    private String icon;
 
     /**
-     * 父id
+     * 简介
      *
-     * @mbggenerated Tue Nov 06 17:24:31 CST 2018
+     * @mbggenerated Wed Dec 12 12:20:38 CST 2018
      */
-    private Long pid;
+    private String brief;
 
     private static final long serialVersionUID = 1L;
 
@@ -48,14 +41,6 @@ public class Department implements Serializable {
         this.id = id;
     }
 
-    public Long getH_id() {
-        return h_id;
-    }
-
-    public void setH_id(Long h_id) {
-        this.h_id = h_id;
-    }
-
     public String getName() {
         return name;
     }
@@ -64,19 +49,19 @@ public class Department implements Serializable {
         this.name = name == null ? null : name.trim();
     }
 
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon == null ? null : icon.trim();
+    }
+
     public String getBrief() {
         return brief;
     }
 
     public void setBrief(String brief) {
         this.brief = brief == null ? null : brief.trim();
-    }
-
-    public Long getPid() {
-        return pid;
-    }
-
-    public void setPid(Long pid) {
-        this.pid = pid;
     }
 }

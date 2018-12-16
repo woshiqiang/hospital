@@ -31,7 +31,10 @@
         <activity android:name=".activity.YuYueActivity" />
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".activity.SelectDoctorActivity" />
-        <activity android:name=".activity.DoctorDetailActivity"></activity>
+        <activity android:name=".activity.DoctorDetailActivity" />
+        <activity android:name=".activity.ConfirmOrderActivity" />
+        <activity android:name=".activity.OrderDetailActivity" />
+        <activity android:name=".activity.OrderListActivity"></activity>
     </application>
 
 </manifest>

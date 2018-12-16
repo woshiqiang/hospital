@@ -10,10 +10,16 @@ public class Data implements Serializable {
     public List<Hospital> hospitals;
     public List<Department> departs;
 
-    public ArrayList<String> list;//图片
+    public String url;//图片url
 
-    public ArrayList<Cell> cells;//科室
+    public ArrayList<Department> cells;//科室
 
     public ArrayList<Doctor> doctors;//医生
+
+    public List<TimeLine> timeLines;//排班时间段
+
+    public List<OrderDetail> orders;//我的预约记录
+
+    public OrderDetail orderDetail;//订单
 
 }

@@ -9,7 +9,6 @@ import android.widget.RadioGroup;
 import com.hbck.hospital.R;
 import com.hbck.hospital.fragment.HomeFragment;
 import com.hbck.hospital.fragment.MeFragment;
-import com.hbck.hospital.fragment.OrderFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,18 +42,18 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.rb_home:
                     index = 0;
                     break;
-                case R.id.rb_msg:
+               /* case R.id.rb_msg:
                     index = 1;
-                    break;
+                    break;*/
                 case R.id.rb_me:
-                    index = 2;
+                    index = 1;
                     break;
             }
 
             showFragment(index);
         });
 
-        fragments = new Fragment[]{new HomeFragment(), new OrderFragment(), new MeFragment()};
+        fragments = new Fragment[]{new HomeFragment()/*, new OrderFragment()*/, new MeFragment()};
         getSupportFragmentManager().beginTransaction().add(R.id.fl_main, fragments[0]).add(R.id.fl_main, fragments[1]).hide(fragments[1]).show(fragments[0]).commit();
     }
 

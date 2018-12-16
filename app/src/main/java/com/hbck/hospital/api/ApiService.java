@@ -2,6 +2,7 @@ package com.hbck.hospital.api;
 
 
 import com.hbck.hospital.bean.BaseBean;
+import com.hbck.hospital.bean.Order;
 import com.hbck.lib.ApiFactory;
 
 import java.util.Map;
@@ -52,20 +53,62 @@ public interface ApiService {
     @GET("api/hospital/getHospitals")
     Flowable<BaseBean> getHospitals();
 
+    /**
+     * 获取科室
+     *
+     * @param page 默认第一页
+     * @param rows 默认 每页30条
+     * @return
+     */
     @GET("api/hospital/getDepartments")
-    Flowable<BaseBean> getDepartments(@Query("hosId") Long hosId, @Query("pid") Long pid);
+    Flowable<BaseBean> getDepartments(@Query("page") Integer page, @Query("rows") Integer rows);
 
-    @GET("api/hospital/getCells")
-    Flowable<BaseBean> getCells(@Query("hosId") Long hosId);
 
     /**
-     * type 1:问题图片 2：头像 3：录音
+     * 文件上传
+     *
+     * @param map
+     * @return
      */
     @Multipart
     @POST("file/uploadFile")
-    Flowable<BaseBean> uploadFile(@PartMap Map<String, RequestBody> map, @Query("type") String type);
+    Flowable<BaseBean> uploadFile(@PartMap Map<String, RequestBody> map);
 
-    @GET("api/hospital/getDoctorsByCellID")
-    Flowable<BaseBean> getDoctorsByCellID(@Query("cellId") Long cellId);
+    /**
+     * 根据科室id获取医生
+     *
+     * @param departmentId
+     * @return
+     */
+    @GET("api/hospital/getDoctorsByDepartmentId")
+    Flowable<BaseBean> getDoctorsByDepartmentId(@Query("departmentId") Long departmentId);
+
+
+    /**
+     * 保存预约订单
+     *
+     * @param order
+     * @return
+     */
+    @POST("api/hospital/saveOrder")
+    Flowable<BaseBean> saveOrder(@Body Order order);
+
+    /**
+     * 查询时间段
+     *
+     * @param docId
+     * @return
+     */
+    @GET("api/hospital/selectTimeLinesByDocId")
+    Flowable<BaseBean> selectTimeLinesByDocId(@Query("docId") Long docId);
+
+
+    /**
+     *
+     * @param userId
+     * @return
+     */
+    @GET("api/hospital/selectOrders")
+    Flowable<BaseBean> selectOrders(@Query("userId") Long userId);
 
 }

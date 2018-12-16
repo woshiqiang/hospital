@@ -73,6 +73,8 @@ public class Hospital implements Serializable {
      */
     private String description;
 
+    private String image;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -153,5 +155,13 @@ public class Hospital implements Serializable {
 
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

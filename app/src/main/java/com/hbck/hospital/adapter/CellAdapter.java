@@ -8,16 +8,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hbck.hospital.R;
-import com.hbck.hospital.bean.Cell;
+import com.hbck.hospital.api.C;
+import com.hbck.hospital.bean.Department;
 import com.hbck.hospital.util.ImageLoaderUtil;
 
 import java.util.List;
 
 public class CellAdapter extends BaseAdapter {
     private Context mContext;
-    private List<Cell> list;
+    private List<Department> list;
 
-    public CellAdapter(Context mContext, List<Cell> list) {
+    public CellAdapter(Context mContext, List<Department> list) {
         this.mContext = mContext;
         this.list = list;
     }
@@ -50,7 +51,7 @@ public class CellAdapter extends BaseAdapter {
         }
 
         holder.tv_cell.setText(list.get(i).getName());
-        ImageLoaderUtil.display(mContext, list.get(i).getIcon(), holder.iv_cell);
+        ImageLoaderUtil.display(mContext, C.IMG_URL + list.get(i).getIcon(), holder.iv_cell);
         return view;
     }
 

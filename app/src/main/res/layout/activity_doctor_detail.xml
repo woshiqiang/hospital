@@ -9,13 +9,14 @@
 
     <include layout="@layout/include_tool_bar" />
 
-    <ScrollView
+   <!-- <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content">-->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
 
             <LinearLayout
@@ -80,42 +81,23 @@
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
-                <Button
-                    android:onClick="yy"
-                    android:id="@+id/btn_yy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="预约" />
 
             </LinearLayout>
 
-            <LinearLayout
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </android.support.design.widget.TabLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPager"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/commDimen">
+                android:layout_height="match_parent" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="简介"
-                    android:textColor="#000"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tv_desc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/commDimen"
-                    android:lineSpacingMultiplier="1.4"
-                    android:text="@string/app_name" />
-
-
-            </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+<!--    </ScrollView>-->
 
 
 </LinearLayout>

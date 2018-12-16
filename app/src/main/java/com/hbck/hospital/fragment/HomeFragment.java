@@ -18,6 +18,7 @@ import com.hbck.apt.ApiFactory;
 import com.hbck.hospital.R;
 import com.hbck.hospital.activity.DetailActivity;
 import com.hbck.hospital.adapter.HospitalAdapter;
+import com.hbck.hospital.api.C;
 import com.hbck.hospital.bean.Hospital;
 import com.hbck.hospital.util.ImageLoaderUtil;
 import com.jude.rollviewpager.RollPagerView;
@@ -52,15 +53,15 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         unbinder = ButterKnife.bind(this, view);
         initData();
-        initBanner();
         return view;
     }
 
     private void initBanner() {
         List<String> list = new ArrayList<>();
-        list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1544258152800&di=262a032d17d28c50ccd494d94a9f6ef9&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F010a02571dd3466ac72538122e29e4.jpg%401280w_1l_2o_100sh.jpg");
-        list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1544258152800&di=ff17d71ff5be5ec0f5ff30a0b357a43a&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fdesign%2F00%2F69%2F99%2F66%2F9fce5755f081660431464492a9aeb003.jpg");
-        list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1544258152799&di=befcb2a66da93b72639a42e66bbfb34e&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01e12d56ef92586ac7257d20bfaf8d.jpg");
+        list.add(C.IMG_URL + this.list.get(0).getImage());
+//        list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1544258152800&di=262a032d17d28c50ccd494d94a9f6ef9&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F010a02571dd3466ac72538122e29e4.jpg%401280w_1l_2o_100sh.jpg");
+//        list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1544258152800&di=ff17d71ff5be5ec0f5ff30a0b357a43a&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fdesign%2F00%2F69%2F99%2F66%2F9fce5755f081660431464492a9aeb003.jpg");
+//        list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1544258152799&di=befcb2a66da93b72639a42e66bbfb34e&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01e12d56ef92586ac7257d20bfaf8d.jpg");
 
         //设置播放时间间隔
         mRollViewPager.setPlayDelay(3000);
@@ -115,6 +116,7 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
                             if (baseBean.code == 1) {
                                 list = baseBean.data.hospitals;
                                 listView.setAdapter(new HospitalAdapter(getContext(), list));
+                                initBanner();
                             } else {
                                 Toast.makeText(getContext(), baseBean.message, Toast.LENGTH_SHORT).show();
                             }

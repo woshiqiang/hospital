@@ -19,6 +19,8 @@ import com.hbck.apt.ApiFactory;
 import com.hbck.hospital.R;
 import com.hbck.hospital.activity.AboutActivity;
 import com.hbck.hospital.activity.LoginActivity;
+import com.hbck.hospital.activity.OrderListActivity;
+import com.hbck.hospital.api.C;
 import com.hbck.hospital.bean.User;
 import com.hbck.hospital.util.Constants;
 import com.hbck.hospital.util.DialogUtil;
@@ -27,7 +29,6 @@ import com.hbck.hospital.util.SpUtil;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -90,8 +91,8 @@ public class MeFragment extends Fragment {
             tvNick.setText(SpUtil.getString(Constants.USERNAME));
             tvIntroduction.setText(currentUser.getNickname());
             String image = currentUser.getImage();
-            if (!TextUtils.isEmpty(image)){
-                ImageLoaderUtil.display(getContext(), image, rivHead);
+            if (!TextUtils.isEmpty(image)) {
+                ImageLoaderUtil.display(getContext(), C.IMG_URL + image, rivHead);
             }
         }
 
@@ -114,10 +115,11 @@ public class MeFragment extends Fragment {
             case R.id.ll_my_info:
                 break;
             case R.id.ll_my_product:
+                startActivity(new Intent(getContext(),OrderListActivity.class));
                 break;
             case R.id.ll_about:
                 //关于我们
-                startActivity(new Intent(getContext(),AboutActivity.class));
+                startActivity(new Intent(getContext(), AboutActivity.class));
                 break;
             case R.id.ll_logout:
                 SpUtil.put(Constants.USERNAME, "");
@@ -162,12 +164,11 @@ public class MeFragment extends Fragment {
         Map<String, RequestBody> mapParam = new HashMap<>();
         mapParam.put("file" + "\"; filename=\"" + file.getName(), requestFile);
 
-        ApiFactory.uploadFile(mapParam, "2")
+        ApiFactory.uploadFile(mapParam)
                 .subscribe(baseBean -> {
                     if (baseBean.code == 1) {
-                        ArrayList<String> list = baseBean.data.list;
-                        String s = list.get(0);
-                        currentUser.setImage(s);
+                        String s = C.IMG_URL + baseBean.data.url;
+                        currentUser.setImage(baseBean.data.url);
                         ImageLoaderUtil.display(getContext(), s, rivHead);
                         updateUserInfo(currentUser);
                     } else {

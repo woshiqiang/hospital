@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.hbck.apt.ApiFactory;
 import com.hbck.hospital.R;
 import com.hbck.hospital.adapter.CellAdapter;
-import com.hbck.hospital.bean.Cell;
+import com.hbck.hospital.bean.Department;
 import com.hbck.hospital.bean.Hospital;
 
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public class SelectCellActivity extends AppCompatActivity implements AdapterView
     GridView gridView;
 
     private Hospital data;
-    private List<Cell> list = new ArrayList<>();
+    private List<Department> list = new ArrayList<>();
     private CellAdapter adapter;
 
     @Override
@@ -63,7 +63,7 @@ public class SelectCellActivity extends AppCompatActivity implements AdapterView
 
     @SuppressLint("CheckResult")
     private void getData() {
-        ApiFactory.getCells(data.getId())
+        ApiFactory.getDepartments(1, 30)
                 .subscribe(baseBean -> {
                             list = baseBean.data.cells;
                             adapter = new CellAdapter(SelectCellActivity.this, list);

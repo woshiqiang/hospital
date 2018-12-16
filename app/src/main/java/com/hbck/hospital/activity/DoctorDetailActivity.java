@@ -1,13 +1,18 @@
 package com.hbck.hospital.activity;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.TextView;
 
 import com.hbck.hospital.R;
+import com.hbck.hospital.adapter.TabAdapter;
 import com.hbck.hospital.bean.Doctor;
+import com.hbck.hospital.fragment.JianJieFragment;
+import com.hbck.hospital.fragment.YuyueFragment;
 import com.hbck.hospital.util.ImageLoaderUtil;
 import com.makeramen.roundedimageview.RoundedImageView;
 
@@ -32,8 +37,11 @@ public class DoctorDetailActivity extends AppCompatActivity {
     TextView tvTitle;
     @BindView(R.id.tv_money)
     TextView tvMoney;
-    @BindView(R.id.tv_desc)
-    TextView tvDesc;
+    @BindView(R.id.viewPager)
+    ViewPager viewPager;
+
+    @BindView(R.id.tabLayout)
+    TabLayout tabLayout;
 
     private Doctor doctor;
 
@@ -42,7 +50,16 @@ public class DoctorDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_detail);
         ButterKnife.bind(this);
+
         initData();
+        initTabLayout();
+    }
+
+    private void initTabLayout() {
+        String[] titles = {"简介", "预约"};
+        tabLayout.setupWithViewPager(viewPager);
+        Fragment[] fragments = {JianJieFragment.newInstance(doctor.getDescription()), YuyueFragment.newInstance(doctor)};
+        viewPager.setAdapter(new TabAdapter(getSupportFragmentManager(), titles, fragments));
     }
 
     private void initData() {
@@ -61,10 +78,6 @@ public class DoctorDetailActivity extends AppCompatActivity {
         tvTitle.setText(doctor.getTitle());
         tvSex.setText("性别：" + doctor.getSex());
         tvMoney.setText("诊断费：" + doctor.getMoney());
-        tvDesc.setText(doctor.getDescription());
     }
 
-    public void yy(View view) {
-
-    }
 }

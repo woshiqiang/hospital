@@ -1,14 +1,19 @@
 package com.hbck.hospital.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hbck.hospital.R;
+import com.hbck.hospital.api.C;
 import com.hbck.hospital.bean.Hospital;
+import com.hbck.hospital.util.ImageLoaderUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -69,13 +74,36 @@ public class DetailActivity extends AppCompatActivity {
         tvAddress.setText(data.getAddress());
         tvRoute.setText(data.getRout());
         tvDesc.setText(data.getDescription());
+
+        ImageLoaderUtil.display(this, C.IMG_URL + data.getImage(), ivHospital);
     }
 
 
-    @OnClick(R.id.toolbar_right)
-    public void onViewClicked() {
-        Intent intent = new Intent(this, SelectCellActivity.class);
-        intent.putExtra("data", data);
-        startActivity(intent);
+    @OnClick({R.id.toolbar_right, R.id.tv_address})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.toolbar_right:
+                Intent intent = new Intent(this, SelectCellActivity.class);
+                intent.putExtra("data", data);
+                startActivity(intent);
+                break;
+            case R.id.tv_address://导航
+                daoHang();
+                break;
+        }
+
+    }
+
+    private void daoHang() {
+        try {
+            Intent intent = Intent.getIntent("androidamap://navi?sourceApplication=慧医&poiname=" + data.getAddress() + "&lat=" + data.getLatitude() + "&lon=" + data.getLongitude() + "&dev=0");
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "您尚未安装高德地图", Toast.LENGTH_LONG).show();
+            Uri uri = Uri.parse("market://details?id=com.autonavi.minimap");
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        }
     }
 }

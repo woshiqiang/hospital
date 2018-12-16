@@ -1,7 +1,6 @@
 package com.hbck.hospital.bean;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Doctor implements Serializable {
     private Long id;
@@ -9,107 +8,86 @@ public class Doctor implements Serializable {
     /**
      * 姓名
      *
-     * @mbggenerated Sat Dec 08 14:35:31 CST 2018
+     * @mbggenerated Thu Dec 13 16:48:04 CST 2018
      */
     private String name;
 
     /**
      * 性别
      *
-     * @mbggenerated Sat Dec 08 14:35:31 CST 2018
+     * @mbggenerated Thu Dec 13 16:48:04 CST 2018
      */
     private String sex;
 
     /**
      * 职称
      *
-     * @mbggenerated Sat Dec 08 14:35:31 CST 2018
+     * @mbggenerated Thu Dec 13 16:48:04 CST 2018
      */
     private String title;
 
     /**
      * 主诊
      *
-     * @mbggenerated Sat Dec 08 14:35:31 CST 2018
+     * @mbggenerated Thu Dec 13 16:48:04 CST 2018
      */
     private String major;
 
     /**
-     * 医生编号
+     * 出生日期,计算年龄用
      *
-     * @mbggenerated Sat Dec 08 14:35:31 CST 2018
+     * @mbggenerated Thu Dec 13 16:48:04 CST 2018
      */
-    private String doc_num;
+    private String birthday;
 
     /**
-     * 年龄
+     * 参加工作的时间，计算从业年限
      *
-     * @mbggenerated Sat Dec 08 14:35:31 CST 2018
+     * @mbggenerated Thu Dec 13 16:48:04 CST 2018
      */
-    private Integer age;
-
-    /**
-     * 从业年限
-     *
-     * @mbggenerated Sat Dec 08 14:35:31 CST 2018
-     */
-    private Integer job_time;
+    private String job_time;
 
     /**
      * 毕业院校
      *
-     * @mbggenerated Sat Dec 08 14:35:31 CST 2018
+     * @mbggenerated Thu Dec 13 16:48:04 CST 2018
      */
     private String college;
 
     /**
-     * 就诊时间
-     *
-     * @mbggenerated Sat Dec 08 14:35:31 CST 2018
-     */
-    private String do_time;
-
-    /**
      * 简介
      *
-     * @mbggenerated Sat Dec 08 14:35:31 CST 2018
+     * @mbggenerated Thu Dec 13 16:48:04 CST 2018
      */
     private String description;
 
     /**
-     * 头像
-     *
-     * @mbggenerated Sat Dec 08 14:35:31 CST 2018
-     */
-    private String image;
-
-    /**
      * 挂号费
      *
-     * @mbggenerated Sat Dec 08 14:35:31 CST 2018
+     * @mbggenerated Thu Dec 13 16:48:04 CST 2018
      */
     private Integer money;
 
     /**
      * 电话
      *
-     * @mbggenerated Sat Dec 08 14:35:31 CST 2018
+     * @mbggenerated Thu Dec 13 16:48:04 CST 2018
      */
     private String phone;
 
     /**
-     * 出生日期
-     *
-     * @mbggenerated Sat Dec 08 14:35:31 CST 2018
-     */
-    private Date birthday;
-
-    /**
      * 所属科室id
      *
-     * @mbggenerated Sat Dec 08 14:35:31 CST 2018
+     * @mbggenerated Thu Dec 13 16:48:04 CST 2018
      */
-    private Long cell_id;
+    private Long dep_id;
+
+    /**
+     * 头像
+     *
+     * @mbggenerated Thu Dec 13 16:48:04 CST 2018
+     */
+    private String image;
 
     private static final long serialVersionUID = 1L;
 
@@ -153,28 +131,20 @@ public class Doctor implements Serializable {
         this.major = major == null ? null : major.trim();
     }
 
-    public String getDoc_num() {
-        return doc_num;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public void setDoc_num(String doc_num) {
-        this.doc_num = doc_num == null ? null : doc_num.trim();
+    public void setBirthday(String birthday) {
+        this.birthday = birthday == null ? null : birthday.trim();
     }
 
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public Integer getJob_time() {
+    public String getJob_time() {
         return job_time;
     }
 
-    public void setJob_time(Integer job_time) {
-        this.job_time = job_time;
+    public void setJob_time(String job_time) {
+        this.job_time = job_time == null ? null : job_time.trim();
     }
 
     public String getCollege() {
@@ -185,28 +155,12 @@ public class Doctor implements Serializable {
         this.college = college == null ? null : college.trim();
     }
 
-    public String getDo_time() {
-        return do_time;
-    }
-
-    public void setDo_time(String do_time) {
-        this.do_time = do_time == null ? null : do_time.trim();
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image == null ? null : image.trim();
     }
 
     public Integer getMoney() {
@@ -225,19 +179,19 @@ public class Doctor implements Serializable {
         this.phone = phone == null ? null : phone.trim();
     }
 
-    public Date getBirthday() {
-        return birthday;
+    public Long getDep_id() {
+        return dep_id;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setDep_id(Long dep_id) {
+        this.dep_id = dep_id;
     }
 
-    public Long getCell_id() {
-        return cell_id;
+    public String getImage() {
+        return image;
     }
 
-    public void setCell_id(Long cell_id) {
-        this.cell_id = cell_id;
+    public void setImage(String image) {
+        this.image = image == null ? null : image.trim();
     }
 }
