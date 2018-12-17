@@ -19,6 +19,7 @@ import com.hbck.apt.ApiFactory;
 import com.hbck.hospital.R;
 import com.hbck.hospital.activity.AboutActivity;
 import com.hbck.hospital.activity.LoginActivity;
+import com.hbck.hospital.activity.ModifyInfoActivity;
 import com.hbck.hospital.activity.OrderListActivity;
 import com.hbck.hospital.api.C;
 import com.hbck.hospital.bean.User;
@@ -85,11 +86,21 @@ public class MeFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        initData();
+    }
+
     private void initData() {
         currentUser = SpUtil.getUser();
         if (currentUser != null) {
             tvNick.setText(SpUtil.getString(Constants.USERNAME));
-            tvIntroduction.setText(currentUser.getNickname());
+            if (TextUtils.isEmpty(currentUser.getNickname())) {
+                tvIntroduction.setText("未填写昵称");
+            } else {
+                tvIntroduction.setText(currentUser.getNickname());
+            }
             String image = currentUser.getImage();
             if (!TextUtils.isEmpty(image)) {
                 ImageLoaderUtil.display(getContext(), C.IMG_URL + image, rivHead);
@@ -113,9 +124,10 @@ public class MeFragment extends Fragment {
             case R.id.tv_introduction:
                 break;
             case R.id.ll_my_info:
+                startActivity(new Intent(getContext(), ModifyInfoActivity.class));
                 break;
             case R.id.ll_my_product:
-                startActivity(new Intent(getContext(),OrderListActivity.class));
+                startActivity(new Intent(getContext(), OrderListActivity.class));
                 break;
             case R.id.ll_about:
                 //关于我们

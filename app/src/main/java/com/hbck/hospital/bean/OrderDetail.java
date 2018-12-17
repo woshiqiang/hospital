@@ -52,6 +52,7 @@ public class OrderDetail implements Serializable{
     public long createTime;
     public int depId;
     public String orderCode;
-    public int id;
+    public Long id;
     public String yydate;
+    public Integer flagType;
 }

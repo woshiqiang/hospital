@@ -4,8 +4,11 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.hbck.apt.ApiFactory;
 import com.hbck.hospital.R;
 import com.hbck.hospital.api.C;
 import com.hbck.hospital.bean.OrderDetail;
@@ -67,6 +70,30 @@ public class OrderAdapter extends BaseAdapter {
         holder.tvPhone.setText("电话：" + detail.docPhone);
         holder.tvTitle.setText("医生职称：" + detail.docTitle);
         holder.tvFee.setText("诊查费：" + detail.money + "元");
+        if (detail.flagType == 1) {
+            holder.tv_flag_type.setText("您已取消");
+            holder.btn_cancel.setVisibility(View.GONE);
+        } else if (detail.flagType == 2) {
+            holder.tv_flag_type.setText("后台已取消");
+            holder.btn_cancel.setVisibility(View.GONE);
+        } else {
+            holder.btn_cancel.setVisibility(View.VISIBLE);
+        }
+        holder.btn_cancel.setOnClickListener(view1 -> {
+            ApiFactory.updateFlagType(detail.id, 1)
+                    .subscribe(baseBean -> {
+                                if (baseBean.code == 1) {
+                                    detail.flagType = 1;
+                                    notifyDataSetChanged();
+                                    Toast.makeText(mContext, "取消成功", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(mContext, baseBean.message, Toast.LENGTH_SHORT).show();
+                                }
+                            }, e -> {
+                                Toast.makeText(mContext, "网络异常", Toast.LENGTH_SHORT).show();
+                            }
+                    );
+        });
 
         return view;
     }
@@ -90,6 +117,10 @@ public class OrderAdapter extends BaseAdapter {
         TextView tvTitle;
         @BindView(R.id.tv_fee)
         TextView tvFee;
+        @BindView(R.id.btn_cancel)
+        Button btn_cancel;
+        @BindView(R.id.tv_flag_type)
+        TextView tv_flag_type;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

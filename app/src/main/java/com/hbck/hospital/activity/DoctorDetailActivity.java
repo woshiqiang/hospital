@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.hbck.hospital.R;
 import com.hbck.hospital.adapter.TabAdapter;
+import com.hbck.hospital.api.C;
 import com.hbck.hospital.bean.Doctor;
 import com.hbck.hospital.fragment.JianJieFragment;
 import com.hbck.hospital.fragment.YuyueFragment;
@@ -73,7 +74,7 @@ public class DoctorDetailActivity extends AppCompatActivity {
 
 
         doctor = (Doctor) getIntent().getSerializableExtra("doctor");
-        ImageLoaderUtil.display(this, doctor.getImage(), rivHead);
+        ImageLoaderUtil.display(this, C.IMG_URL +doctor.getImage(), rivHead);
         tvName.setText(doctor.getName());
         tvTitle.setText(doctor.getTitle());
         tvSex.setText("性别：" + doctor.getSex());

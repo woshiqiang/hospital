@@ -94,6 +94,15 @@ public interface ApiService {
     Flowable<BaseBean> saveOrder(@Body Order order);
 
     /**
+     * 取消预约
+     *
+     * @param orderId 订单id
+     * @return
+     */
+    @POST("api/hospital/updateFlagType")
+    Flowable<BaseBean> updateFlagType(@Query("orderId") Long orderId, @Query("flagType") Integer flagType);
+
+    /**
      * 查询时间段
      *
      * @param docId
@@ -104,7 +113,6 @@ public interface ApiService {
 
 
     /**
-     *
      * @param userId
      * @return
      */

@@ -34,7 +34,8 @@
         <activity android:name=".activity.DoctorDetailActivity" />
         <activity android:name=".activity.ConfirmOrderActivity" />
         <activity android:name=".activity.OrderDetailActivity" />
-        <activity android:name=".activity.OrderListActivity"></activity>
+        <activity android:name=".activity.OrderListActivity" />
+        <activity android:name=".activity.ModifyInfoActivity"></activity>
     </application>
 
 </manifest>

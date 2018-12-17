@@ -7,6 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.hbck.hospital.R;
+import com.hbck.hospital.api.C;
 import com.hbck.hospital.bean.Doctor;
 import com.hbck.hospital.util.ImageLoaderUtil;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -53,7 +54,7 @@ public class DoctorAdapter extends BaseAdapter {
         }
 
         holder.tvName.setText(list.get(i).getName());
-        ImageLoaderUtil.display(mContext, list.get(i).getImage(), holder.rivHead);
+        ImageLoaderUtil.display(mContext, C.IMG_URL + list.get(i).getImage(), holder.rivHead);
 
         return view;
     }
