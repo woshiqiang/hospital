@@ -43,6 +43,13 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="医院：昆明市中医医院"
+                        android:textColor="#000"
+                        android:textSize="14sp" />
+
+                    <TextView
                         android:id="@+id/tv_doc_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
