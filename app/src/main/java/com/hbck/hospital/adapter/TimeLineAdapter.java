@@ -54,8 +54,8 @@ public class TimeLineAdapter extends BaseAdapter {
         }
         holder.tvDate.setText(list.get(i).getDate());
         holder.tvTime.setText(list.get(i).getStarttime() + " - " + list.get(i).getEndtime());
-        Short status = list.get(i).getStatus();
-        String state = status == 1 ? "可预约" : "不可预约";
+        Integer status = list.get(i).getStatus();
+        String state = status == 1 ? "可预约" : "已满";
         holder.tvState.setText(state);
         if (status == 1) {
             holder.tvState.setTextColor(mContext.getResources().getColor(R.color.colorPrimary));

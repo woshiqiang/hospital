@@ -101,12 +101,13 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         order.setPayState(0);
         order.setDepId(doctor.getDep_id());
 
-        ApiFactory.saveOrder(order)
+        ApiFactory.saveOrder(order,timeLine.getId())
                 .subscribe(baseBean -> {
                             if (baseBean.code == 1) {
                                 OrderDetail orderDetail = baseBean.data.orderDetail;
                                 Intent intent = new Intent(ConfirmOrderActivity.this, OrderDetailActivity.class);
                                 intent.putExtra("orderDetail", orderDetail);
+                                Toast.makeText(this, "预约成功", Toast.LENGTH_SHORT).show();
                                 startActivity(intent);
                                 finish();
                             } else {

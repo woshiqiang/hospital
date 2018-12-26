@@ -68,7 +68,7 @@ public class YuyueFragment extends Fragment {
         lv_timelines.setOnItemClickListener((adapterView, view, i, l) -> {
             TimeLine timeLine = list.get(i);
             if (timeLine.getStatus() != 1) {
-                Toast.makeText(getContext(), "不能预约", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "已满，不能预约", Toast.LENGTH_SHORT).show();
                 return;
             }
             String date = timeLine.getDate();
@@ -78,8 +78,8 @@ public class YuyueFragment extends Fragment {
                     .setPositiveButton("确定", (dialogInterface, i12) -> {
                         dialogInterface.dismiss();
                         Intent intent = new Intent(getContext(), ConfirmOrderActivity.class);
-                        intent.putExtra("doctor",doctor);
-                        intent.putExtra("timeLine",timeLine);
+                        intent.putExtra("doctor", doctor);
+                        intent.putExtra("timeLine", timeLine);
                         startActivity(intent);
                         getActivity().finish();
                     })

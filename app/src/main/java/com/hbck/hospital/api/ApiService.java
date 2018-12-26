@@ -91,7 +91,7 @@ public interface ApiService {
      * @return
      */
     @POST("api/hospital/saveOrder")
-    Flowable<BaseBean> saveOrder(@Body Order order);
+    Flowable<BaseBean> saveOrder(@Body Order order,@Query("timeLineId")Long timeLineId);
 
     /**
      * 取消预约

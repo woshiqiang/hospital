@@ -8,44 +8,51 @@ public class TimeLine implements Serializable {
     /**
      * 医生id
      *
-     * @mbggenerated Wed Dec 12 10:33:26 CST 2018
+     * @mbggenerated Wed Dec 26 14:58:16 CST 2018
      */
     private Long doctor_id;
 
     /**
      * 日期
      *
-     * @mbggenerated Wed Dec 12 10:33:26 CST 2018
+     * @mbggenerated Wed Dec 26 14:58:16 CST 2018
      */
     private String date;
 
     /**
      * 允许预约的人数
      *
-     * @mbggenerated Wed Dec 12 10:33:26 CST 2018
+     * @mbggenerated Wed Dec 26 14:58:16 CST 2018
      */
     private Integer quota;
 
     /**
      * 时段开始语 例8:00
      *
-     * @mbggenerated Wed Dec 12 10:33:26 CST 2018
+     * @mbggenerated Wed Dec 26 14:58:16 CST 2018
      */
     private String starttime;
 
     /**
      *  时段结束 例9:00
      *
-     * @mbggenerated Wed Dec 12 10:33:26 CST 2018
+     * @mbggenerated Wed Dec 26 14:58:16 CST 2018
      */
     private String endtime;
 
     /**
      * 该时段是否允许预约 0 否 1允许
      *
-     * @mbggenerated Wed Dec 12 10:33:26 CST 2018
+     * @mbggenerated Wed Dec 26 14:58:16 CST 2018
      */
-    private Short status;
+    private Integer status;
+
+    /**
+     * 已约数量
+     *
+     * @mbggenerated Wed Dec 26 14:58:16 CST 2018
+     */
+    private Integer leftnum;
 
     private static final long serialVersionUID = 1L;
 
@@ -97,11 +104,19 @@ public class TimeLine implements Serializable {
         this.endtime = endtime == null ? null : endtime.trim();
     }
 
-    public Short getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Short status) {
+    public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getLeftnum() {
+        return leftnum;
+    }
+
+    public void setLeftnum(Integer leftnum) {
+        this.leftnum = leftnum;
     }
 }

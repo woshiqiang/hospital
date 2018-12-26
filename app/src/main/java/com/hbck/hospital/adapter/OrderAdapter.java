@@ -77,7 +77,7 @@ public class OrderAdapter extends BaseAdapter {
             holder.tv_flag_type.setText("后台已取消");
             holder.btn_cancel.setVisibility(View.GONE);
         } else {
-            holder.tv_flag_type.setText("预约中");
+            holder.tv_flag_type.setText("预约成功");
             holder.btn_cancel.setVisibility(View.VISIBLE);
         }
         holder.btn_cancel.setOnClickListener(view1 -> {
